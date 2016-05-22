@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +15,7 @@ namespace ConsoleApplication1
             var p = new Program();
             p.Describe();
             p.Transform();
+            p.Write();
 
             Console.ReadLine();
         }
@@ -41,6 +44,21 @@ namespace ConsoleApplication1
 
             var result = implementation.Transform(testData);
             Console.WriteLine("\nNode transformer result:\n");
+            Console.WriteLine(result);
+        }
+
+        private async void Write()
+        {
+            var implementation = new NodeWriter();
+
+            var testData = new NoChildrenNode("root");
+
+            var filePath = ConfigurationManager.AppSettings.Get("filePath");
+
+            await implementation.WriteToFileAsync(testData, filePath);
+
+            var result = File.ReadAllText(filePath);
+            Console.WriteLine("\nNode writer result:\n");
             Console.WriteLine(result);
         }
     }
