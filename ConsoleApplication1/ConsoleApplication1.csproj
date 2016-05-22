@@ -59,7 +59,9 @@
     <Compile Include="ManyChildrenNode.cs" />
     <Compile Include="NoChildrenNode.cs" />
     <Compile Include="Node.cs" />
+    <Compile Include="NodeBase.cs" />
     <Compile Include="NodeDescriber.cs" />
+    <Compile Include="NodeTransformer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SingleChildNode.cs" />

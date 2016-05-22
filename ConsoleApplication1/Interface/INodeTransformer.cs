@@ -8,6 +8,6 @@ namespace ConsoleApplication1
 {
     public interface INodeTransformer
     {
-        Node Transform(Node node);
+        string Transform(Node node);
     }
 }

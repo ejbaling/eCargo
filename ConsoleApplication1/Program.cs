@@ -11,8 +11,8 @@ namespace ConsoleApplication1
         static void Main(string[] args)
         {
             var p = new Program();
-
             p.Describe();
+            p.Transform();
 
             Console.ReadLine();
         }
@@ -25,6 +25,22 @@ namespace ConsoleApplication1
                  new TwoChildrenNode("child1", new NoChildrenNode("leaf1"), new SingleChildNode("child2", new NoChildrenNode("leaf2"))));
 
             var result = implementation.Describe(testData);
+            Console.WriteLine("Node describer result:\n");
+            Console.WriteLine(result);
+        }
+
+        private void Transform()
+        {
+            var implementation = new NodeTransformer();
+
+            var testData = new ManyChildrenNode("root",
+                new ManyChildrenNode("child",
+                    new ManyChildrenNode("leaf1"),
+                    new ManyChildrenNode("child2",
+                        new ManyChildrenNode("leaf2"))));
+
+            var result = implementation.Transform(testData);
+            Console.WriteLine("\nNode transformer result:\n");
             Console.WriteLine(result);
         }
     }
